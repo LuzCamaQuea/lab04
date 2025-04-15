@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Lab04Theme {
                 MiContenedor()
+                MiBoton()
             }
         }
     }
@@ -33,6 +35,13 @@ fun MiContenedor() {
         items(5) { index ->
             Text(text = "Ítem $index", modifier = Modifier.padding(8.dp))
         }
+    }
+}
+
+@Composable
+fun MiBoton() {
+    Button(onClick = { /* Acción */ }) {
+        Text(text = "Haz clic aquí")
     }
 }
 
