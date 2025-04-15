@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,9 +19,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.lab04.ui.theme.Lab04Theme
 
 class MainActivity : ComponentActivity() {
@@ -29,56 +32,30 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Lab04Theme {
-                BotonConDialogo()
+                ViewHolaCurso()
             }
         }
     }
 }
 @Composable
-fun BotonConDialogo() {
-    var mostrarDialogo by remember { mutableStateOf(false) }
-
+fun ViewHolaCurso() {
     Column(
-        modifier = Modifier.padding(16.dp)
-
+        modifier = Modifier
+            .fillMaxWith()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(onClick = { mostrarDialogo = true }) {
-            Text(text = "Mostrar Diálogo")
-        }
+        Text(
+            text = "Welcome to the Course!",
+            fontSize = 28.sp,
+            fontWeight = FontWeigh.Bold
+        )
+        Spacer(modifier = Modifier.heigh(16.dp))
+        Text(
+            text = "Hello, Student!",
+            fontSize = 20.xD
 
-        if (mostrarDialogo) {
-            AlertDialog(
-                onDismissRequest = { mostrarDialogo = false },
-                title = { Text("Título del Diálogo") },
-                text = { Text("Este es el contenido del diálogo.") },
-                confirmButton = {
-                    TextButton(onClick = { mostrarDialogo = false }) {
-                        Text("Aceptar")
-                    }
-                },
-                dismissButton = {
-                    TextButton(onClick = { mostrarDialogo = false }) {
-                        Text("Cancelar")
-                    }
-                }
-            )
-        }
     }
 }
 
-@Composable
-fun MiContenedor() {
-    LazyColumn {
-        items(5) { index ->
-            Text(text = "Ítem $index", modifier = Modifier.padding(8.dp))
-        }
-    }
-}
-
-@Composable
-fun MiBoton() {
-    Button(onClick = { /* Acción */ }) {
-        Text(text = "Haz clic aquí")
-    }
-}
 
